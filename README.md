@@ -22,18 +22,18 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ## Requirments
-    "php": "^8.1",
-    "laravel/framework": "^10.10",
+    "php": "^8.1", <br>
+    "laravel/framework": "^10.10",<br>
     "laravel/sanctum": "^3.3",
 
 ## Install
 Clone repo
     https://github.com/paularinzee/laravel-e-shop-api.git
 
-    composer update/install:
+    composer update/install:<br>
     composer install 
 
-Run the migration:
+Run the migration:<br>
 
-    php artisan migrate
+    php artisan migrate <br>
     php artisan storage:link
