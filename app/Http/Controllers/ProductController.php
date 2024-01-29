@@ -11,9 +11,9 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index(){
-        $Product = Product::paginate(10);
-        if($product){
-            return response()->json($brands, 200);
+        $products = Product::paginate(10);
+        if($products){
+            return response()->json($products, 200);
 
         }else return response()->json('no products');
         

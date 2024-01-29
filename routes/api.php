@@ -23,34 +23,37 @@ use App\Http\Controllers\OrderController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::group(['prefix'=>'auth'], function($router){
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+
+
 Route::middleware('auth:sanctum')->group(function(){
+
+
+Route::group(['prefix'=>'auth'], function($router){
 Route::get('/user-profile', [AuthController::class, 'userProfile']);
 Route::post('/logout', [AuthController::class, 'logout']);
 });
-});
+
 
 
 Route::group(['prefix'=>'brands'], function($router){
     Route::controller(BrandController::class)->group(function(){
-        Route::get('index','index');
-        Route::get('show/{id}','show');
-        Route::post('store','store');
-        Route::put('update_brand/{id}','update');
-        Route::delete('delete_brand/{id}','delete');
+        Route::get('/','index')->middleware('admin');
+        Route::get('show/{id}','show')->middleware('admin');
+        Route::post('store','store')->middleware('admin');
+        Route::put('update_brand/{id}','update')->middleware('admin');
+        Route::delete('delete_brand/{id}','delete')->middleware('admin');
         });
 });
 
 Route::group(['prefix'=>'category'], function($router){
     Route::controller(CategoryController::class)->group(function(){
-        Route::get('index','index');
-        Route::get('show/{id}','show');
-        Route::post('store','store');
-        Route::put('update_category/{id}','update');
-        Route::delete('delete_category/{id}','delete');
+        Route::get('index','index')->middleware('admin');
+        Route::get('show/{id}','show')->middleware('admin');
+        Route::post('store','store')->middleware('admin');
+        Route::put('update_category/{id}','update')->middleware('admin');
+        Route::delete('delete_category/{id}','delete')->middleware('admin');
         });
 
 });
@@ -64,24 +67,25 @@ Route::group(['prefix'=>'location'], function($router){
 });
 Route::group(['prefix'=>'product'], function($router){
     Route::controller(ProductController::class)->group(function(){
-        Route::get('index','index');
-        Route::post('store','store');
-        Route::get('show/{id}','show');
-        Route::put('update/{id}','update');
-        Route::delete('destroy/{id}','destroy');
+        Route::get('index','index')->middleware('admin');
+        Route::post('store','store')->middleware('admin');
+        Route::get('show/{id}','show')->middleware('admin');
+        Route::put('update/{id}','update')->middleware('admin');
+        Route::delete('destroy/{id}','destroy')->middleware('admin');
         });
 });
-Route::group(['prefix'=>'orders'], function($router){
-    Route::controller(OrderController::class)->group(function(){
-        Route::get('index','index');
-        Route::post('store','store');
-        Route::get('show/{id}','show');
-        Route::get('get_order_items/{id}','get_order_items');
-        Route::get('get_order_orders/{id}','get_order_orders');
-        Route::post('change_order_status/{id}','change_order_status');
-        });
-});
+// Route::group(['prefix'=>'orders'], function($router){
+//     Route::controller(OrderController::class)->group(function(){
+//         Route::get('index','index');
+//         Route::post('store','store');
+//         Route::get('show/{id}','show');
+//         Route::get('get_order_items/{id}','get_order_items');
+//         Route::get('get_user_orders/{id}','get_order_orders');
+//         Route::post('change_order_status/{id}','change_order_status');
+//         });
+// });
 
+});
 
 
 

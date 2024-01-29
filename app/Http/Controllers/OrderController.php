@@ -50,7 +50,7 @@ class OrderController extends Controller
         }
         $order = new Order();
         $order->user_id = Auth::id();
-        $order->location_id = location->id;
+        $order->location_id = $location->id;
         $order->total_price = $request->total_price;
         // $order->quantity = $request->quantity;
         $order->date_of_delivery = $request->date_of_delivery;
@@ -82,7 +82,7 @@ class OrderController extends Controller
         } else return response()->json('no items found');
     }
     
-    public function get_order_orders($id){
+    public function get_user_orders($id){
         $orders=Order::where('user_id',$id)
         ::with('items',function($query){
             $query->orderBy('created_at', 'desc');

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->enum('status',['Pending', 'Delivered', 'Out for delivery', 'Cancelled', 'Accepted'])->default('Pending');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('location_id')->unsigned();
-            $table->double('total_price,12,2');
+            $table->double('total_price',12,2);
             $table->string('date_of_delivery');
             $table->timestamps();
 
