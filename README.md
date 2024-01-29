@@ -27,10 +27,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
     "laravel/sanctum": "^3.3"
 
 ## Install
-Clone repo
+Clone repo 
     https://github.com/paularinzee/laravel-e-shop-api.git
 
-    composer update/install:<br>
+Composer update/install: <br>
     composer install 
 
 Run the migration:<br>
